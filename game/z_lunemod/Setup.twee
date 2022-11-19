@@ -1,0 +1,103 @@
+:: Lune Mod Variables Setup [widget]
+<<widget "studyoptions">>
+	<<link [[Study|Room Study]]>><</link>>
+	<br>
+<</widget>>
+
+<<widget "lunemod_variableset">>
+
+<<if $mechaitems is undefined>>
+	<<set $mechaitems to {
+		puzzle:0,
+		box:0,
+		robot:0,
+		tool:0,
+		parts:0,
+		robotbuild:0,
+	}>>
+<</if>>
+
+<<if $mechanical is undefined>>
+	<<set $mechanical to 0>>
+<</if>>
+
+<<if $robotname or $robot is undefined>>
+	<<unset $robotname>>
+	<<set $robot to {
+		name:"Robert",
+		pronoun:"it",
+		battery:0,
+		humanity:0,
+		condition:0,
+	}>>
+<</if>>
+
+<<if $natural_lactation is undefined>>
+	<<set $natural_lactation to 0>>
+<</if>>
+<<if $omegaversal is undefined>>
+	<<set $omegaversal to 0>>
+<</if>>
+
+<<if ($cheatdisable is "f" and !$debug) or ($rentmod lt 1 and !$debug)>>
+	<<set $feats.locked to true>>
+<<else>>
+	<<set $feats.locked to false>>
+<</if>>
+
+<<if $robotgender is undefined>>
+	<<set $robotgender to "m">>
+<</if>>
+
+<<if $robotgenitals is undefined>>
+	<<set $robotgenitals to "penis">>
+<</if>>
+
+<<if $robot_penis_size is undefined>>
+	<<set $robot_penis_size to 3>>
+<</if>>
+
+<<set $pregnancyTesting to true>>
+
+<</widget>>
+
+:: Lune Mod Widgets [widget]
+
+<<widget "lune_lactationchange">>
+	<<if $natural_lactation gte 1>>
+		<<if $lactating is 0>>
+			<<set $lactating to 1>><<set $lactation_pressure to 60>><<set $milk_amount to 10*$breastsize>>
+		<<elseif $args[0]>>
+			<<set $lactation_pressure += $args[0]>>
+		<<else>>
+			<<set $lactation_pressure += $natural_lactation*30>>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "daisoicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/daiso.png">
+	<</if>>
+<</widget>>
+
+<<widget "repairicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/repair.png">
+	<</if>>
+<</widget>>
+
+:: Lune Mod Process [widget]
+
+<<widget "lunemod_daytime">>
+
+<<if $robot.battery gte 1>>
+	<<set $robot.batter -= 1>>
+<</if>>
+
+<<if $robot.humanity gte 50>>
+	<<trauma -10>>
+<</if>>
+
+<</widget>>
+

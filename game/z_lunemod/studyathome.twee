@@ -1,0 +1,48 @@
+﻿:: Room Study 
+<<effects>>
+
+You pull out your textbooks. 
+<br><br>
+
+<<link [[Study science (0:20)|Room Study 2]]>><<pass 20>><<set $phase to 1>><</link>><<gscience>><<gwillpower>>
+<br>
+<<link [[Study maths (0:20)|Room Study 2]]>><<pass 20>><<set $phase to 2>><</link>><<gmaths>><<gwillpower>>
+<br>
+<<link [[Study English (0:20)|Room Study 2]]>><<pass 20>><<set $phase to 3>><</link>><<genglish>><<gwillpower>>
+<br>
+<<link [[Study history (0:20)|Room Study 2]]>><<pass 20>><<set $phase to 4>><</link>><<ghistory>><<gwillpower>>
+<br><br>
+
+<<if $location is "farmhouse">>
+	<<link [[Put books away|Farmhouse Guest Bedroom]]>><</link>>
+	<br>
+<<elseif $location is "cabin">>
+	<<link [[Put books away|Eden Cabin]]>><</link>>
+	<br>
+<<elseif $location is "asylum">>
+	<<link [[Put books away|Asylum Cell]]>><</link>>
+	<br>
+<<else>>
+	<<link [[Put books away|Bedroom]]>><</link>>
+	<br>
+<</if>>
+
+
+
+:: Room Study 2 
+<<set $outside to 0>><<effects>>
+
+<<if $phase is 1>><<scienceskill>>
+You rest on the bed with a science textbook and read through the material.
+<<elseif $phase is 2>><<mathsskill>>
+You rest on the bed with a maths textbook and read through the material.
+<<elseif $phase is 3>><<englishskill>>
+You rest on the bed with an English textbook and read through the material.
+<<elseif $phase is 4>><<historyskill>>
+You rest on the bed with a history textbook and read through the material.
+<</if>>
+<<willpower 1>>
+<br><br>
+
+<<link [[Next|Room Study]]>><</link>>
+<br>
