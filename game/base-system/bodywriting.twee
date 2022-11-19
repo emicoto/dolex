@@ -845,7 +845,7 @@ Second arg: tool */
 <<widget "bodypart_admire_prostitution">>
 <<if $NPCList[_n].paid is 1>>
 <<elseif $skin[_args[0]].degree lte 0>>
-	<<set _moneyearn to random(5,30)>>
+	<<set $_money to random(5,30)>>
 	<<if ((($enemyarousal*2) + ($enemytrust * 5) - $enemyanger + ($attractiveness / 5) * ($seductionskill / 100)) gte 1000)>>
 		<<set $enemyanger += 10>><<set $enemytrust -= 50>><<fameprostitution 1>>
 		<<if !$speechadmired>><<set $speechadmired to 1>>
@@ -857,7 +857,8 @@ Second arg: tool */
 				<<case 5>><<He>> speaks. "I should pay you. I doubt you're good for anything else."
 			<</switch>>
 		<</if>>
-		<<He>> drops a <<moneyGain (20+_moneyearn)>> note atop you.
+		<<set $_money += 20>>
+		<<He>> drops a <<moneyGain $_money>> note atop you.
 		<<earnFeat "Billboard">><<set $NPCList[_n].paid to 1>>
 	<<elseif (($enemyarousal + ($enemytrust * 5) - $enemyanger + ($attractiveness / 5) * ($seductionskill / 200)) gte 500)>>
 		<<set $enemyanger += 10>><<set $enemytrust -= 50>><<fameprostitution 1>>
@@ -870,7 +871,8 @@ Second arg: tool */
 				<<case 5>><<He>> speaks. "Cheap and dirty whores are the best."
 			<</switch>>
 		<</if>>
-		<<He>> drops a <<moneyGain (10+_moneyearn)>> note atop you.
+		<<set $_money += 10>>
+		<<He>> drops a <<moneyGain $_money>> note atop you.
 		<<earnFeat "Billboard">><<set $NPCList[_n].paid to 1>>
 	<<else>><<set $enemytrust -= 20>>
 		<<fameprostitution 1>>
