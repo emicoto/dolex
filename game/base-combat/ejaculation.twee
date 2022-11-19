@@ -2576,7 +2576,7 @@
 		<<bHe>> ejaculates into your bowels.
 	<</if>>
 	<<analejacstat>><<ejacstat>><<set $hygiene += 500>><<bodyliquid "anus" "semen">><<set $hunger -= 200>><<set $thirst -= 200>>
-	<<if $omegaversal>><<recordVaginalSperm "pc" $NPCList[_nn].fullDescription `($enemytype is "man" ? "human" : $NPCList[_nn].type)`>><</if>>
+	<<if $omegaversal>><<recordVaginalSperm "pc" $NPCList[_jj].fullDescription `($enemytype is "human" ? "npc" : $NPCList[_jj].type)`>><</if>>
 	<<if _npciswolftype>><<transform wolf 1>><</if>>
 <</if>>
 
