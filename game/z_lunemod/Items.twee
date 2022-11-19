@@ -1,0 +1,104 @@
+﻿:: Items [widget]
+
+<<widget "titleItems">>
+	<<setupTabs>>
+	<div id="overlayTabs" class="tab">
+		<<closeButtonMobile>>
+		<<button "Items">>
+			<<toggleTab>>
+			<<replace #customOverlayContent>><<items>><</replace>>
+		<</button>>
+	</div>
+	<<closeButton>>
+<</widget>>
+
+
+<<widget "items">>
+<br>
+Pepper spray: <<print $spray>> | <span class="steel">You only can use on combat. </span><br>
+<br>
+Anti-stress: <span id="stats_antistress"><<print $psychodrugs.antistress>></span> pills | 
+<<if $psychodrugs.antistress gte 1>>
+    <<link "Use">>
+    <<set $psychodrugs.antistress -= 1>>
+    <<set $stress to Math.clamp($stress - $stressmax*0.1, 0, $stressmax)>>
+    <<replace "#stats_antistress">><<print $psychodrugs.antistress>><</replace>>
+    <</link>>
+<<else>>
+    <span class="steel">You don't have any pills.</span>
+<</if>>
+<br>
+Mind tranquilizer: <span id="stats_controling"><<print $psychodrugs.controling>></span> pills | 
+<<if $psychodrugs.controling gte 1>>
+    <<link "Use">>
+    <<set $psychodrugs.controling -= 1>>
+    <<control 50>>
+    <<replace "#stats_controling">><<print $psychodrugs.controling>><</replace>>
+    <</link>>
+<<else>>
+    <span class="steel">You don't have any pills.</span>
+<</if>>
+<br>
+<br>
+
+<<if $mechaitems.tool is 1>>
+Mechanic tool set | <span class="steel">+5% skulduggery</span><br>
+<</if>>
+
+<<if $mechaitems.puzzle isnot 0>>
+Puzzle buckle | <span class="steel">You can learn some about unlocking from it.</span><br>
+<</if>>
+
+<<if $mechaitems.box isnot 0>>
+Mechanism box | <span class="steel">You can learn some about unlocking from it.</span><br>
+<</if>>
+
+<<if $mechaitems.robot is 1>>
+    <<if $mechaitems.robotbuild gte 100>>
+    Robot Friend <<print $robotname>> | It's your friend, you can play with it in your room.<br>
+    <<else>>
+    Robot set | <span class="steel"><<if $mechaitems.robotbuild isnot 0>>Robot process: <<print $mechaitems.robotbuild>>%. |<</if>> You can improve your mechanical knowledge from building robots.</span><br>
+    <</if>>
+Mechanic parts: <<print $mechaitems.parts>>  | <<if $mechaitems.parts isnot 0>><span class="steel">You can use these parts to fix your robot.</span><</if>><br>
+<</if>>
+
+<br><br>
+
+	<div class="characteristic-box-extras">
+		<<if $antiquemoney gt 0>>
+			You are carrying antiques worth £<<print $antiquemoney>>.
+			<br>
+		<</if>>
+		<<if $blackmoney gt 0>>
+			You are carrying £<<print $blackmoney>> in stolen goods.
+			<br>
+		<</if>>
+		<<set _plant_keys to Object.keys($plants)>>
+		<<for _t to 0; _t lt _plant_keys.length; _t++>>
+			<<if $plants[_plant_keys[_t]].amount gte 1>><<set _plant_temp to 1>>
+				You have <span class="gold"><<print $plants[_plant_keys[_t]].amount>></span> 
+				<<if $images is 1 and setup.plants[_plant_keys[_t]].icon>>
+					<img class="tending_icon" @src="`img/misc/icon/tending/` + setup.plants[_plant_keys[_t]].icon">
+				<</if>>		
+				<<print $plants[_plant_keys[_t]].plural>>. |
+			<</if>>
+		<</for>>
+		<<if _plant_temp is 1>>You can sell them by renting a stand on Connudatus Street at dawn.<br><</if>>
+		<<if $phials_held gte 2>>
+			You are carrying $phials_held phials of aphrodisiac. You can sell them on Elk Street. <br>
+		<<elseif $phials_held gte 1>>
+			You are carrying a phial of aphrodisiac. You can sell it on Elk Street. <br>
+		<</if>>
+		<<if $lurkers_held gte 2>>
+			You are carrying $lurkers_held lurkers. <br>
+		<<elseif $lurkers_held is 1>>
+			You are carrying a lurker. <br>
+		<</if>>
+		<br>
+	</div>
+
+<</widget>>
+
+
+
+Math.clamp($stress, 0, $stressmax)

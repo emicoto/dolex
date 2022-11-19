@@ -17,6 +17,10 @@
 			<</script>>
 
 			<<switch _key>>
+				/*Lune Mod Add items to menu*/
+				<<case "items">>
+					<<replace #customOverlayTitle>><<titleItems>><</replace>>
+					<<replace #customOverlayContent>><<items>><</replace>>
 				<<case "characteristics">>
 					<<replace #customOverlayTitle>><<titleCharacteristics>><</replace>>
 					<<replace #customOverlayContent>><<characteristics>><</replace>>

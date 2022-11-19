@@ -2529,6 +2529,10 @@
 		<<link [[Look inside a cabinet|School Infirmary Cabinet]]>><</link>>
 		<br>
 	<</if>>
+	<<if $passage isnot "School Infirmary Counselling">>
+		<<link [[Get Counselling(0:15)|School Infirmary Counselling]]>><<pass 15>><</link>>
+		<br>
+	<</if>>
 	<<link [[Leave|Hallways]]>><<endevent>><</link>>
 	<br>
 <</widget>>

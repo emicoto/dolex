@@ -291,6 +291,20 @@ You approach the cabinets. They're locked up tight. Behind the glass, you see se
 <<link [[Leave it alone|School Infirmary]]>><</link>>
 <br>
 
+:: School Infirmary Counselling
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+
+The nurse let you sit down on the sofa. <br>
+<br>
+"Take easy, you will be fine." the nurse waved the pocket watch, "you are safe now, no one will hurt you."<br>
+<br>
+You feel much better.<br>
+<<set $trauma -= 100>>
+<<set $stress -= 100>>
+<<set $control += 100>>
+<br>
+<<school_infirmary_options>>
+
 :: School Infirmary Steal Drugs
 <<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
 

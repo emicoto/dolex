@@ -5,6 +5,12 @@
 <</widget>>
 
 <<widget "lunemod_variableset">>
+<<if ($psychodrugs is undefined ) or ($psychodrugs is 0) or ($psychodrugs.antistress is undefined)>>
+	<<set $psychodrugs to {
+		antistress:0,
+		controling:0,
+	}>>
+<</if>>
 
 <<if $mechaitems is undefined>>
 	<<set $mechaitems to {
@@ -55,6 +61,10 @@
 
 <<if $robot_penis_size is undefined>>
 	<<set $robot_penis_size to 3>>
+<</if>>
+
+<<if setup.pharmacyItems['anti_stress'] is undefined >>
+	<<setPharmacyItems>>
 <</if>>
 
 <<set $pregnancyTesting to true>>
