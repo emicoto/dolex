@@ -139,6 +139,7 @@ You are in your bedroom.
 		<<link [[Read it|Robin Note]]>><<set $robinnote to 1>><</link>>
 		<br><br>
 	<</if>>
+	<<studyoptions>>
 	<<projectoptions>>
 	<<homeStudyOptions>>
 	<<lunemod_mechoptions>>
