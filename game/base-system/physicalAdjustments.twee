@@ -161,10 +161,10 @@
 <<set _pills.pregnancy.owned.contraceptive to Math.clamp(_pills.pregnancy.owned.contraceptive, 0, 1000)>>
 */
 <<if $sexStats.vagina is undefined>>
-	<<set _baseDays to random(24,38)>>
-	<<if _baseDays lt 26>>
+	<<set _baseDays to random(10,18)>>
+	<<if _baseDays lt 8>>
 		<<set _baseDaysRng to random(0,4)>>
-	<<elseif _baseDays gte 30>>
+	<<elseif _baseDays gte 16>>
 		<<set _baseDaysRng to random(-4,0)>>
 	<<else>>
 		<<set _baseDaysRng to random(-2,2)>>

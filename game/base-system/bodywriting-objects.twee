@@ -2219,6 +2219,17 @@
 		lewd: 1,
 		degree: 0
 		},
+	
+	breeding_slave:{
+		index: 191,
+		writing:"Breeding Slave",
+		type:"magic",
+		arrow:1,
+		special:"pregnancy",
+		gender:"f",
+		lewd:1,
+		degree:0
+	},
 }>>
 <<set setup.bodywriting_namebyindex to []>>
 <<for _label, _value range setup.bodywriting>>
