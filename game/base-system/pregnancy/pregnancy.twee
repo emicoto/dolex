@@ -537,7 +537,6 @@
 /*args[0] - potential mother, args[1] - npc fullDescription or "pc", _args[2] - type of pregnancy, _args[3] - _daysTillRemoval override for specific events*/
 <<widget "recordVaginalSperm">>
 /*ToDo: Pregnancy, remove $pregnancyTesting to properly enable*/
-	<<run console.log('record',_args)>>
 <<if _args[0] and _args[1] and _args[2] and $pregnancyTesting>>
 
 	<<if _args[0] is "pc">>
@@ -1165,7 +1164,7 @@
 	<<set $_genders to {m:0,f:0,h:0}>>
 	<<run _pregnancy.fetus.forEach(b => $_genders[b.gender]++)>>
 	<<if _pregnancy.fetus[0].features.identical is true>>
-		<<set $_text_output to "Dr Harper thinks they are all identical <<if _pregnancy.fetus.length is 3>>triplets<<else>>twins<</if>> due to them all being the same gender and their facial features being similar.">>
+		<<set $_text_output to "Dr Harper thinks they are all identical <<if _pregnancy.fetus.length is 4>>quadruplets<<elseif _pregnancy.fetus.length is 3>>triplets<<else>>twins<</if>> due to them all being the same gender and their facial features being similar.">>
 	<<elseif ($_genders.m is _pregnancy.fetus.length or $_genders.f is _pregnancy.fetus.length or $_genders.h is _pregnancy.fetus.length) and _pregnancy.fetus.length gt 1>>
 		<<set $_text_output to "Despite all being the same gender Dr Harper thinks they are not identical due to having slightly different facial features.">>
 	<<else>>
