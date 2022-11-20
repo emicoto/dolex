@@ -677,13 +677,13 @@
 <<set _menstruation.currentDay to 0.5>>
 <<set _menstruation.currentDaysMax to _menstruation.baseDays + random(0, _menstruation.baseDaysRng)>>
 <<set _stage2 to Math.round(_menstruation.currentDaysMax * 0.17)>>
-<<if _stage2 gte 2>>
+<<if _stage2 gte 4>>
 	<<set _stage2-->>
 <</if>>
 <<set _stage3 to Math.round(_menstruation.currentDaysMax * 0.5)>>
-<<if _stage3 lt 7>>
+<<if _stage3 lt 5>>
 	<<set _stage3++>>
-<<elseif _stage3 gte 17>>
+<<elseif _stage3 gte 14>>
 	<<set _stage3-->>
 <</if>>
 <<set _menstruation.stages to [0, _stage2, _stage3, _stage3 + random(1,2) * 0.5]>>
