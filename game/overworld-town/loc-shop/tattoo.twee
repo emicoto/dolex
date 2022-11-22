@@ -188,6 +188,9 @@ Location:<br>
 	<label>Money Slave print <<radiobutton "$tattoo_choice" "money_slave">></label> |
 <</if>>
 
+<<if $sexStats.vagina.pregnancy.totalBirthEvents + $sexStats.anus.pregnancy.givenBirth gte 2>>
+	<label>Bleeding Slave print <<radiobutton "$tattoo_choice" "bleeding_slave">></label> |
+<</if>>
 <br><br>
 /*noeinan mod START*/
 /*added magic section and tf magic seal*/
